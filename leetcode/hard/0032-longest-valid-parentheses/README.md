@@ -44,30 +44,49 @@ Output: 0
 ## Solution
 
 **Language:** C++  
-**Runtime:** 4 ms (beats 22.83%)  
-**Memory:** 11.6 MB (beats 83.80%)  
-**Submitted:** 2026-10-03T07:16:43.514Z  
+**Runtime:** 1 ms (beats 54.48%)  
+**Memory:** 10.3 MB (beats 89.15%)  
+**Submitted:** 2026-10-03T07:40:51.914Z  
 
 ```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {
+        int left=0;
+        int right=0;
         int max_len=0;
-        stack<int>st;
-        st.push(-1);
+
         for(int i=0; i<s.size(); i++){
             if(s[i]=='('){
-                st.push(i);
+                left++;
             }
             else{
-                st.pop();
+                right++;
+            }
 
-                if(st.empty()){
-                    st.push(i);
-                }
-                else{
-                    max_len=max(max_len,i-st.top());
-                }
+            if(left==right){
+                max_len=max(max_len,2*right);
+            }
+            else if(right>left){
+                left=right=0;
+            }
+        }
+
+        left=right=0;
+
+        for(int i=s.size()-1; i>=0; i--){
+            if(s[i]=='('){
+                left++;
+            }
+            else{
+                right++;
+            }
+
+            if(left==right){
+                max_len=max(max_len,2*left);
+            }
+            else if(left>right){
+                left=right=0;
             }
         }
         return max_len;
