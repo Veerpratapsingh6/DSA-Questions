@@ -49,31 +49,35 @@ Output: 2
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms  
-**Memory:** 7.8 MB  
-**Submitted:** 2026-10-05T08:25:35.268Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 8.2 MB (beats 21.13%)  
+**Submitted:** 2026-10-05T12:10:16.762Z  
 
 ```cpp
 class Solution {
 public:
     int scoreOfParentheses(string s) {
-        stack<char>st;
-        int count=0;
+        stack<int>st;
+        st.push(0);
         for(int i=0; i<s.size(); i++){
             if(s[i]=='('){
-                st.push(s[i]);
+                st.push(0);
             }
             else{
-                if(st.top()=='('){
-                    count++;
-                    st.pop();
+                int top=st.top();
+                st.pop();
+
+                int score=0;
+                if(top==0){
+                    score=1;
                 }
                 else{
-                    st.push(s[i]);
+                    score=2*top;
                 }
+                st.top()+=score;
             }
         }
-        return count;
+        return st.top();
     }
 };
 ```
