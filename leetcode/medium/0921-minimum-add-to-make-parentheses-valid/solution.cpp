@@ -16,9 +16,13 @@ public:
                 }
                 else{
                     count_close++;
+                    st.push(s[i]);
                 }
             }
         }
-        return abs(count_open-count_close);
+        if(st.empty()){
+            return abs(count_open-count_close);
+        }
+        return st.size();
     }
 };
