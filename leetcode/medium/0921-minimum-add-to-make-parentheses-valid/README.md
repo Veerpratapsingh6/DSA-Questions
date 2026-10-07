@@ -44,9 +44,9 @@ Output: 3
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms  
-**Memory:** 7.8 MB  
-**Submitted:** 2026-10-07T08:08:10.201Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 8.5 MB (beats 30.44%)  
+**Submitted:** 2026-10-07T08:10:16.866Z  
 
 ```cpp
 class Solution {
@@ -67,10 +67,14 @@ public:
                 }
                 else{
                     count_close++;
+                    st.push(s[i]);
                 }
             }
         }
-        return abs(count_open-count_close);
+        if(st.empty()){
+            return abs(count_open-count_close);
+        }
+        return st.size();
     }
 };
 ```
