@@ -7,7 +7,7 @@ public:
             set<int>st;
             for(int j=i; j<n; j++){
                 st.insert(nums[j]);
-                int count=st.size();
+                long long count=st.size();
                 ans+=count*count;
             }
         }
