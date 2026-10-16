@@ -56,9 +56,9 @@ The sum of the squares of the distinct counts in all subarrays is equal to 12 + 
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms  
-**Memory:** 8 MB  
-**Submitted:** 2026-10-16T06:29:59.789Z  
+**Runtime:** 65 ms  
+**Memory:** 25.8 MB  
+**Submitted:** 2026-10-16T06:30:58.216Z  
 
 ```cpp
 class Solution {
@@ -70,7 +70,7 @@ public:
             set<int>st;
             for(int j=i; j<n; j++){
                 st.insert(nums[j]);
-                int count=st.size();
+                long long count=st.size();
                 ans+=count*count;
             }
         }
